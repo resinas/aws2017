@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require('path');
@@ -42,10 +44,12 @@ app.get(baseAPI + "/contacts/:name", (request, response) => {
     var name = request.params.name;
 
     contacts.get(name,(err,contacts)=>{
-        if (contacts.length == 0)
+        if (contacts.length === 0) {
             response.sendStatus(404);
-        else
+        }
+        else {
             response.send(contacts[0]);  
+        }
     });
 });
 
@@ -68,10 +72,11 @@ app.put(baseAPI + "/contacts/:name", (request, response) => {
 
     contacts.update(name, updatedContact ,(err,numUpdates) => {
         console.log("contacts updated:"+numUpdates);
-        if (numUpdates == 0)
+        if (numUpdates === 0) {
             response.sendStatus(404);    
-        else
+        } else {
             response.sendStatus(200);    
+        }
         
     });
 

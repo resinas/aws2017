@@ -1,8 +1,10 @@
+'use strict';
+
 var path = require('path');
-var dataStore = require('nedb');
+var DataStore = require('nedb');
 var dbFileName = path.join(__dirname, 'contacts.json');
 
-var db = new dataStore({
+var db = new DataStore({
     filename : dbFileName,
     autoload : true
 });
@@ -14,7 +16,7 @@ db.insert([{
     }, {
         name: "luis",
         phone: "67890",
-        email: "luis@pepe.com",
+        email: "luis@pepe.com"
     }]);
 
 
