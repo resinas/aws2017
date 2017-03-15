@@ -9,16 +9,6 @@ var db = new DataStore({
     autoload : true
 });
 
-db.insert([{
-        name: "pepe",
-        phone: "12345",
-        email: "pepe@pepe.com"
-    }, {
-        name: "luis",
-        phone: "67890",
-        email: "luis@pepe.com"
-    }]);
-
 
 var Contacts = function () {};
 
@@ -26,8 +16,8 @@ Contacts.prototype.allContacts = function(callback) {
     return db.find({}, callback);
 };
 
-Contacts.prototype.add = function(contact) {
-    return db.insert(contact);
+Contacts.prototype.add = function(contact, callback) {
+    return db.insert(contact, callback);
 };
 
 Contacts.prototype.removeAll = function(callback) {

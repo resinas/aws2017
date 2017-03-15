@@ -13,6 +13,15 @@ var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
+contacts.add([{
+        name: "pepe",
+        phone: "12345",
+        email: "pepe@pepe.com"
+    }, {
+        name: "luis",
+        phone: "67890",
+        email: "luis@pepe.com"
+    }]);
 
 app.get(baseAPI + "/contacts", (request, response) => {
     console.log("GET /contacts"); 
