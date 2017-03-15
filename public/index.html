@@ -13,7 +13,7 @@
         
         <h1>Contacts</h1>
         <div ng-controller="ListCtrl">
-        <form name="myForm">
+        <form name="newContactForm">
             <table class="table">
                 <thead>
                     <tr>
@@ -27,8 +27,8 @@
                     <tr>
                         <td><input class="form-control" type="text" ng-model="newContact.name"/></td>
                         <td><input class="form-control" type="text" name="phone" ng-model="newContact.phone"/></td>
-                        <td ng-class="{'has-error': !myForm.email.$valid}"><input class="form-control" type="text" name="email" required ng-pattern="/[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+/" ng-model="newContact.email"/></td>
-                        <td><button class="btn btn-primary" ng-disabled="!myForm.$valid" ng-click="addContact()">Add</button></td>
+                        <td ng-class="{'has-error': !newContactForm.email.$valid}"><input class="form-control" type="text" name="email" required ng-pattern="/[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+/" ng-model="newContact.email"/></td>
+                        <td><button class="btn btn-primary" ng-disabled="!newContactForm.$valid" ng-click="addContact()">Add</button></td>
                     </tr>
                     <tr ng-repeat="contact in contacts">
                         <td>{{contact.name}}</td>
@@ -38,7 +38,6 @@
                 </tbody>
             </table>
         </form>
-{{myForm.email.$valid}}
         </div>
     </body>
     
