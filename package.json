@@ -1,7 +1,7 @@
 {
   "name": "teaching-aws2017",
   "version": "1.0.0",
-  "description": "",
+  "description": "Demo project for AWS",
   "homepage": "https://github.com/resinas/aws2017",
   "main": "index.js",
   "scripts": {
