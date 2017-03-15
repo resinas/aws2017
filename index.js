@@ -84,7 +84,7 @@ app.put(baseAPI + "/contacts/:name", (request, response) => {
 
 contacts.connectDb((err) => {
     if (err) {
-        console.log("Could not connect with db");
+        console.log("Could not connect with MongoDB");
         process.exit(1);
     }
     
