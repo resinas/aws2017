@@ -12,29 +12,34 @@
         
         
         <h1>Contacts</h1>
-        <table class="table" ng-controller="ListCtrl">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><input class="form-control" type="text" ng-model="newContact.name"/></td>
-                    <td><input class="form-control" type="text" ng-model="newContact.phone"/></td>
-                    <td><input class="form-control" type="text" ng-model="newContact.email"/></td>
-                    <td><button class="btn btn-primary" ng-click="addContact()">Add</button></td>
-                </tr>
-                <tr ng-repeat="contact in contacts">
-                    <td>{{contact.name}}</td>
-                    <td>{{contact.phone}}</td>
-                    <td>{{contact.email}}</td>
-                </tr>
-            </tbody>
-        </table>
+        <div ng-controller="ListCtrl">
+        <form name="myForm">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input class="form-control" type="text" ng-model="newContact.name"/></td>
+                        <td><input class="form-control" type="text" name="phone" ng-model="newContact.phone"/></td>
+                        <td ng-class="{'has-error': !myForm.email.$valid}"><input class="form-control" type="text" name="email" required ng-pattern="/[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+/" ng-model="newContact.email"/></td>
+                        <td><button class="btn btn-primary" ng-disabled="!myForm.$valid" ng-click="addContact()">Add</button></td>
+                    </tr>
+                    <tr ng-repeat="contact in contacts">
+                        <td>{{contact.name}}</td>
+                        <td>{{contact.phone}}</td>
+                        <td>{{contact.email}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+{{myForm.email.$valid}}
+        </div>
     </body>
     
 </html>
