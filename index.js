@@ -13,16 +13,6 @@ var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
-contacts.add([{
-        name: "pepe",
-        phone: "12345",
-        email: "pepe@pepe.com"
-    }, {
-        name: "luis",
-        phone: "67890",
-        email: "luis@pepe.com"
-    }]);
-
 app.get(baseAPI + "/contacts", (request, response) => {
     console.log("GET /contacts"); 
     
@@ -92,7 +82,14 @@ app.put(baseAPI + "/contacts/:name", (request, response) => {
     console.log("UPDATE /contacts/"+name);
 });
 
+contacts.connectDb((err) => {
+    if (err) {
+        console.log("Could not connect with MongoDB");
+        process.exit(1);
+    }
+    
 
-app.listen(port, () => {
-    console.log("Server with GUI up and running!!");
+    app.listen(port, () => {
+        console.log("Server with GUI up and running!!");
+    });    
 });

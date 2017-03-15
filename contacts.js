@@ -1,19 +1,25 @@
 'use strict';
 
-var path = require('path');
-var DataStore = require('nedb');
-var dbFileName = path.join(__dirname, 'contacts.json');
-
-var db = new DataStore({
-    filename : dbFileName,
-    autoload : true
-});
+var MongoClient = require('mongodb').MongoClient;
+var db;
 
 
 var Contacts = function () {};
 
+Contacts.prototype.connectDb = function(callback) {
+    MongoClient.connect(process.env.MONGODB_URL, function(err, database) {
+        if(err) {
+            callback(err);
+        }
+        
+        db = database.collection('contacts');
+        
+        callback(err, database);
+    });
+};
+
 Contacts.prototype.allContacts = function(callback) {
-    return db.find({}, callback);
+    return db.find({}).toArray(callback);
 };
 
 Contacts.prototype.add = function(contact, callback) {
@@ -25,7 +31,7 @@ Contacts.prototype.removeAll = function(callback) {
 };
 
 Contacts.prototype.get = function(name, callback) {
-    return db.find({name:name}, callback);
+    return db.find({name:name}).toArray(callback);
 };
 
 Contacts.prototype.remove = function(name, callback) {
