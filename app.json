@@ -1,0 +1,20 @@
+{
+  "name": "aws2017",
+  "scripts": {
+  },
+  "env": {
+    "MONGODB_URL": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
