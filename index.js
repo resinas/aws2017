@@ -5,6 +5,7 @@ var bodyParser = require("body-parser");
 var path = require('path');
 var contacts = require("./contacts.js");
 var users = require("./users.js");
+var cors = require('cors');
 var passport = require('passport'),
     BasicStrategy = require('passport-http').BasicStrategy,
     LocalAPIKey = require('passport-localapikey').Strategy;
@@ -40,6 +41,7 @@ var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(passport.initialize());
+app.use(cors())
 
 app.get(baseAPI + "/contacts", passport.authenticate(['localapikey','basic'], {session: false}), (request, response) => {
     console.log("GET /contacts"); 
