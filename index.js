@@ -41,7 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(passport.initialize());
 
-app.get(baseAPI + "/contacts", passport.authenticate('localapikey', {session: false}), (request, response) => {
+app.get(baseAPI + "/contacts", passport.authenticate(['localapikey','basic'], {session: false}), (request, response) => {
     console.log("GET /contacts"); 
     
     contacts.allContacts((err,contacts)=>{
