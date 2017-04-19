@@ -41,7 +41,7 @@ var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(passport.initialize());
-app.use(cors())
+app.use(cors());
 
 app.get(baseAPI + "/contacts", passport.authenticate(['localapikey','basic'], {session: false}), (request, response) => {
     console.log("GET /contacts"); 
