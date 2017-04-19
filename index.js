@@ -30,7 +30,7 @@ passport.use(new LocalAPIKey(
       return done(null, user);
     });
   }    
-))
+));
 
 var port = (process.env.PORT || 16778);
 var baseAPI = "/api/v1";
@@ -125,7 +125,7 @@ contacts.connectDb((err) => {
         app.listen(port, () => {
             console.log("Server with GUI up and running!!");
         });    
-    })
+    });
     
 
 });

@@ -7,11 +7,11 @@ var User = function(params) {
     this.username = params.username;
     this.email = params.email;
     this.password = params.password;
-}
+};
 
 User.prototype.validPassword = function(password) {
     return this.password == password;
-}
+};
 
 var Users = function () {};
 
@@ -36,13 +36,14 @@ Users.prototype.findOne = function(user, callback) {
         if (err) {
             callback(err);
         } else {
-            if (item && item != null)
+            if (item && item != null) {
                 callback(err, new User(item));
-            else
+            } else {
                 callback(err, null);
+            }
         }
     });
-}
+};
 
 Users.prototype.add = function(contact, callback) {
     return db.insert(contact, callback);
